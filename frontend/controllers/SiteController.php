@@ -11,6 +11,7 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+    public  $enableCsrfValidation = false;
     /**
      * @inheritdoc
      */
@@ -81,6 +82,12 @@ class SiteController extends Controller
         return $this->render('login', [
             'model' => $model,
         ]);
+    }
+
+    public function actionTest()
+    {
+        $data = $_POST;
+        return json_encode($data);
     }
 
     /**

@@ -11,6 +11,26 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '2ddsbnmhloiuuuu',
         ],
+        'response' => [
+                    'class' => 'yii\web\Response',
+                    'on beforeSend' => function ($event) {
+                        // $response = $event->sender;
+                        // if ($response->data !== null && Yii::$app->request->get('suppress_response_code')) {
+                        //     $response->data = [
+                        //         'success' => $response->isSuccessful,
+                        //         'data' => $response->data,
+                        //     ];
+                        //     $response->statusCode = 200;
+                        // }
+                        $response = $event->sender;
+                        //$response->format = $response::FORMAT_JSON;
+                        //$response->getStatusCode()
+                        $response->data = json_encode([
+                            'statusCode' => $response->getStatusCode(),
+                            'data' => $response->data
+                        ]);
+                    },
+                ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -47,7 +67,7 @@ $config = [
                 '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+                // ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
             ],
         ],
         

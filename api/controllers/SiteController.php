@@ -11,6 +11,7 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+    public  $enableCsrfValidation = false;
     /**
      * @inheritdoc
      */
@@ -31,7 +32,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    '*' => ['post'],
                 ],
             ],
         ];
@@ -93,6 +94,14 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    
+
+    public function actionTest()
+    {
+        $data = $_POST;
+        return $data;
     }
 
     /**
