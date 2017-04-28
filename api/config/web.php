@@ -25,10 +25,10 @@ $config = [
                         $response = $event->sender;
                         //$response->format = $response::FORMAT_JSON;
                         //$response->getStatusCode()
-                        $response->data = json_encode([
+                        $response->data = [
                             'statusCode' => $response->getStatusCode(),
                             'data' => $response->data
-                        ]);
+                        ];
                     },
                 ],
         'cache' => [
@@ -67,8 +67,8 @@ $config = [
                 '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 
-                // ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
-            ],
+                /*['class' => 'yii\rest\UrlRule', 'controller' => 'teacher'],
+*/            ],
         ],
         
     ],

@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "article".
@@ -11,35 +11,7 @@ use Yii;
  * @property string $book_name
  * @property string $sub_title
  */
-class Article extends \yii\db\ActiveRecord
+class Article extends ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'article';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['book_name', 'sub_title'], 'string', 'max' => 50],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'book_name' => 'Book Name',
-            'sub_title' => 'Sub Title',
-        ];
-    }
+    
 }
